@@ -154,7 +154,7 @@ public class Alumno extends Persona{
 
             out.println("\tExamenes de la asignatura");
             for(int j = 0; j < aux.getExamenes().size(); j++){
-                out.print("\t\tTitulo: " + aux.getExamenes().get(j)
+                out.println("\t\tTitulo: " + aux.getExamenes().get(j)
                     .getNombre() + "\tCalificacion: " + 
                     aux.getExamenes().get(j).getCalificacion());
             }                    
