@@ -6,17 +6,17 @@ import java.io.*;
  *
  * @author botarga
  */
-public class Persona {
+public abstract class Persona {
     /*-----ATRIBUTOS-----*/
     //Estáticos
     private static BufferedReader in = 
         new BufferedReader(new InputStreamReader(System.in));
     
     //No Estáticos
-    private String nombre;
-    private String dni;
-    private String login;
-    private String contrasenya;
+    protected String nombre;
+    protected String dni;
+    protected String login;
+    protected String contrasenya;
     
     /*-----CONSTRUCTORES-----*/
     public Persona (String nombre, String login, String contrasenya, String dni){
@@ -43,6 +43,9 @@ public class Persona {
         
         return exito;
     }
+    
+    //Abstractos
+    public abstract void mostrarMenu();
     
     /*-----SETTERS-----*/
     public void setNombre(String nombre){

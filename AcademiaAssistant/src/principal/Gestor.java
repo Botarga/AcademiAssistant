@@ -19,18 +19,20 @@ public class Gestor {
     
     //No estáticos
     private ArrayList<Persona> usuarios;
+    private Persona usuarioActual;
     
     /*-----CONSTRUCTOR-----*/
     public Gestor(){
         terminado = false;
         usuarios = new ArrayList<>();
-        usuarios.add(new Persona("Mario Vivas", "Mario", "abcd", "123456t"));
+        usuarios.add(new Alumno("Mario Vivas", "Mario", "abcd", "123456t"));
     }
     
     /*-----MÉTODOS-----*/
     public boolean login(){     
         boolean exito = false;
         boolean aux = false;
+        int i;
         String nombre, contrasenya;
         
         try{
@@ -46,7 +48,7 @@ public class Gestor {
             }
             
             //Buscar usuario y comprobar login
-            for(int i = 0; i < usuarios.size() && !aux; i++){
+            for(i = 0; i < usuarios.size() && !aux; i++){
                 if (usuarios.get(i).getLogin().compareTo(nombre) == 0){
                     exito = usuarios.get(i).login();
                     aux = true;
@@ -55,8 +57,10 @@ public class Gestor {
             
             //Mostrar información de logeo
             if (aux)
-                if (exito)
-                    out.println("Logeado correctamente\nIniciando sesion...");              
+                if (exito){
+                    out.println("Logeado correctamente\nIniciando sesion...");
+                    usuarioActual = usuarios.get(i);
+                }
                 else
                     out.println("La contraseña introducida no es correcta");
             else
@@ -76,12 +80,14 @@ public class Gestor {
         while(!terminado){
             exitoLogin = login();
             if(exitoLogin){
-                out.println("Sesion iniciada");
+                gestionCuenta ();
             }
         }
     }
     
-    
+    public void gestionCuenta (){
+        
+    }
     
     
     
