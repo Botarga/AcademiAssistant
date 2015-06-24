@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 
 /**
- *
+ * Clase que controla la gestión de los usuarios y sus métodos
  * @author botarga
  */
 public class Gestor {
@@ -22,6 +22,9 @@ public class Gestor {
     private Persona usuarioActual;
     
     /*-----CONSTRUCTOR-----*/
+    /**
+     * Constructor que inicializa la clase gestor
+     */
     public Gestor(){
         terminado = false;
         usuarios = new ArrayList<>();
@@ -29,6 +32,11 @@ public class Gestor {
     }
     
     /*-----MÉTODOS-----*/
+    /**
+     * Método que simula un menú de login pidiendo nombre, contraseña y 
+     * comprobando si es verificable en la base de datos de usuarios
+     * @return true en caso de login con exito, false en caso contrario
+     */
     public boolean login(){     
         boolean exito = false;
         boolean aux = false;
@@ -74,6 +82,9 @@ public class Gestor {
         return exito;
     }
     
+    /**
+     * Método que lanza la aplicación de gestor
+     */
     public void run(){
         boolean exitoLogin = false;
         
@@ -85,6 +96,10 @@ public class Gestor {
         }
     }
     
+    /**
+     * Método que simula el panel de control y gestión de un usuario una vez
+     * que ha logeado con éxito
+     */
     public void gestionCuenta (){
         
     }
@@ -94,7 +109,8 @@ public class Gestor {
     
     
     /**
-     * @param args the command line arguments
+     * Método principal que carga la aplicación, instancia un gestor y lo lanza
+     * @param args argumentos por la linea de comandos
      */
     public static void main(String[] args) {
 
