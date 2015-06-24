@@ -1,6 +1,7 @@
 package principal;
 
 import static java.lang.System.out;
+import java.util.ArrayList;
 
 /**
  * <h1>Clase Delegado</h1>
@@ -17,8 +18,9 @@ public class Delegado extends Alumno{
      * @param contrasenya contraseña del delegado
      * @param dni dni del delegado
      */
-    public Delegado(String nombre, String login, String contrasenya, String dni){
-        super(nombre, login, contrasenya, dni);
+    public Delegado(String nombre, String login, String contrasenya, String dni
+            , ArrayList<Asignatura>asignaturas){
+        super(nombre, login, contrasenya, dni, asignaturas);
     }
     
     /*-----MÉTODOS-----*/

@@ -28,9 +28,9 @@ public class Gestor {
     public Gestor(){
         terminado = false;
         usuarios = new ArrayList<>();
-        usuarios.add(new Alumno("Mario Vivas", "Mario", "abcd", "123456t"));
-        usuarios.add(new Profesor("Rosa", "Rosa", "abcd", "101010j"));
-        usuarios.add(new Delegado("Delegado", "Alberto", "abcd", "103023i"));
+        //usuarios.add(new Alumno("Mario Vivas", "Mario", "abcd", "123456t"));
+        usuarios.add(new Profesor("Rosa", "Rosa", "abcd", "101010j", this));
+        //usuarios.add(new Delegado("Delegado", "Alberto", "abcd", "103023i"));
     }
     
     /*-----MÉTODOS-----*/
@@ -122,7 +122,6 @@ public class Gestor {
         out.println("Saliendo del panel de control");
     }
     
-    
     /**
      * Método principal que carga la aplicación, instancia un gestor y lo lanza
      * @param args argumentos por la linea de comandos
@@ -131,6 +130,17 @@ public class Gestor {
 
         Gestor g = new Gestor();
         g.run();
+    }
+    
+    /*-----SETTERS-----*/
+    
+    /*-----GETTERS----*/
+    /**
+     * Método que obtiene la lista de usuarios del gestor
+     * @return lista de usuarios
+     */
+    public ArrayList<Persona> getUsuarios(){
+        return usuarios;
     }
     
 }

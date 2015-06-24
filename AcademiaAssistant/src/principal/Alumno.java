@@ -1,6 +1,7 @@
 package principal;
 
 import static java.lang.System.out;
+import java.util.ArrayList;
 
 /**
  * <h1>Clase Alumno</h1>
@@ -8,6 +9,8 @@ import static java.lang.System.out;
  * @author botarga
  */
 public class Alumno extends Persona{
+    /*-----ATRIBUTOS-----*/
+    private ArrayList<Asignatura> asignaturas;
     
     /*-----CONSTRUCTORES-----*/
     /**
@@ -17,8 +20,10 @@ public class Alumno extends Persona{
      * @param contrasenya contraseña del alumno
      * @param dni dni del delegado alumno
      */
-    public Alumno (String nombre, String login, String password, String dni){
+    public Alumno (String nombre, String login, String password, String dni
+            , ArrayList<Asignatura> asignaturas){
         super(nombre, login, password, dni);
+        this.asignaturas = asignaturas;
     }
 
     /*-----MÉTODOS-----*/
@@ -66,5 +71,11 @@ public class Alumno extends Persona{
         
         return resultado;
     }
-
+    
+    /*-----SETTERS-----*/
+    
+    /*-----GETTERS-----*/
+    public ArrayList<Asignatura> getAsignaturas(){
+        return asignaturas;
+    }
 }

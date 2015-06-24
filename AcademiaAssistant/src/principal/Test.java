@@ -6,6 +6,8 @@ import java.util.ArrayList;
  * @author botarga
  */
 public class Test {
+    /*-----ATRIBUTOS-----*/
+    private String nombre;
     private int calificacion;
     private Asignatura asignaturaPert;
     private ArrayList<Pregunta> preguntas;
@@ -23,15 +25,37 @@ public class Test {
         }
     }
     
+    
     /*-----CONSTRUCTORES-----*/
-    public Test (Asignatura a){
+    public Test (Asignatura a, String nombre){
         asignaturaPert = a;
+        this.nombre = nombre;
         preguntas = new ArrayList<>();
     }
+    
     
     /*------MÉTODOS------*/
     public void crear (){
         
     }
     
+    
+    /*-----SETTERS----*/
+    
+    
+    /*-----GETTERS----*/
+    /**
+     * Método que devuelve el valor del atributo nombre
+     * @return nombre del examen
+     */
+    public String getNombre(){
+        return nombre;
+    }
+    /**
+     * Método que devuelve el valor del atributo califiación
+     * @return calificación del examen
+     */
+    public int getCalificacion (){
+        return calificacion;
+    }
 }
