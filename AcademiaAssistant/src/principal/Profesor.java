@@ -65,6 +65,7 @@ public class Profesor extends Persona{
                 break;
                 
             case 3:
+                prepararTest();
                 break;
                 
             case 4:
@@ -116,25 +117,7 @@ public class Profesor extends Persona{
                 }while(opcion <= 0 || opcion > alumnos.size());
                 
                 opcion--;
-                //Mostrar datos del alumno
-                out.println("Datos del alumno " + alumnos.get(opcion).getNombre());
-                out.println("Nombre: " + alumnos.get(opcion).getNombre());
-                out.println("Usuario de login: " + alumnos.get(opcion).getLogin());
-                out.println("DNI: " + alumnos.get(opcion).getDni());
-                
-                out.println("Información de sus asignaturas");
-                for(int i = 0; i < alumnos.get(opcion).getAsignaturas().size(); i++){
-                    aux = alumnos.get(opcion).getAsignaturas().get(i);
-                    out.println(aux.getNombre());
-                    out.println("\tNota de asignatura: " + aux.getNota());
-                    
-                    out.println("\tExamenes de la asignatura");
-                    for(int j = 0; j < aux.getExamenes().size(); j++){
-                        out.print("\t\tTitulo: " + aux.getExamenes().get(j)
-                            .getNombre() + "\tCalificacion: " + 
-                            aux.getExamenes().get(j).getCalificacion());
-                    }                    
-                }
+                alumnos.get(opcion).mostrarInformacionAlumno();
             }
             catch(Exception e){
                 out.println("Error: " + e.getMessage());
@@ -252,6 +235,51 @@ public class Profesor extends Persona{
         }
         catch(Exception e){
             out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void prepararTest(){
+        String asignatura, titulo;
+        Test testAux;
+        int n;
+        boolean exito = false;
+        
+        out.println("Interfaz de creacion de test");
+        try{
+            out.println("Introduce el nombre de la asignatura del test (\"salir\""
+                + " para salir de la interfaz)");
+            asignatura = in.readLine();
+            
+            if (asignatura.compareToIgnoreCase("salir") != 0){
+                out.println("Introduce el titulo del test");
+                titulo = in.readLine();
+                testAux = new Test(titulo);
+                testAux.crear();
+                
+                out.println("El test se añadirá a todos los alumnos matriculados"
+                    + " en la asignatura " + asignatura);
+                for (Alumno alumno : alumnos) {
+                    for (int j = 0; j < alumno.getAsignaturas().size(); j++) {
+                        if (alumno.getAsignaturas().get(j).getNombre()
+                                .compareToIgnoreCase(asignatura) == 0) {
+                            alumno.anyadirExamen(testAux);
+                            alumno.getAsignaturas().get(j).anyadirTest(testAux);
+                        }
+                    }
+                }
+                
+                exito = true;
+            }
+            
+            if (exito)
+                out.println("Examen creado con exito");            
+            else
+                out.println("Error al crear el examen");
+            
+        }
+        catch(Exception e){
+            out.println("Error: " + e.getMessage());
+            return;
         }
     }
 }
