@@ -29,6 +29,8 @@ public class Gestor {
         terminado = false;
         usuarios = new ArrayList<>();
         usuarios.add(new Alumno("Mario Vivas", "Mario", "abcd", "123456t"));
+        usuarios.add(new Profesor("Rosa", "Rosa", "abcd", "101010j"));
+        usuarios.add(new Delegado("Delegado", "Alberto", "abcd", "103023i"));
     }
     
     /*-----MÉTODOS-----*/
@@ -60,14 +62,16 @@ public class Gestor {
                 if (usuarios.get(i).getLogin().compareTo(nombre) == 0){
                     exito = usuarios.get(i).login();
                     aux = true;
+                    break;
                 }
             }
             
             //Mostrar información de logeo
             if (aux)
                 if (exito){
-                    out.println("Logeado correctamente\nIniciando sesion...");
                     usuarioActual = usuarios.get(i);
+                    out.println("Logeado correctamente\nIniciando sesion con "
+                        + "el usuario " + usuarioActual.getNombre());
                 }
                 else
                     out.println("La contraseña introducida no es correcta");
@@ -101,11 +105,22 @@ public class Gestor {
      * que ha logeado con éxito
      */
     public void gestionCuenta (){
+        boolean terminado = false;
+        int opcion;
         
+        while(!terminado){
+            try{
+                usuarioActual.mostrarMenu();
+                opcion = Integer.parseInt(in.readLine());
+                terminado = usuarioActual.gestionMenu(opcion);
+            }
+            catch(Exception e){
+                out.println("Error: " + e.getMessage());
+            }
+        }
+        
+        out.println("Saliendo del panel de control");
     }
-    
-    
-    
     
     
     /**

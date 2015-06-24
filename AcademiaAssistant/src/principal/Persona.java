@@ -45,7 +45,7 @@ public abstract class Persona {
         boolean exito = false;
         
         try{
-            System.out.println("Contraseña: ");
+            System.out.print("Contraseña: ");
             aux = in.readLine();
             if (aux.compareTo(contrasenya) == 0)
                 exito = true;
@@ -63,6 +63,7 @@ public abstract class Persona {
      * usuario
      */
     public abstract void mostrarMenu();
+    public abstract boolean gestionMenu(int opcion);
     
     /*-----SETTERS-----*/
     /**
