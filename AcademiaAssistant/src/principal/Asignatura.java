@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public class Asignatura {
     private String nombre;
     private ArrayList<Test> examenes;
-    private int nota;
+    private float nota;
+    private int numNotas;
     
     /*-----CONSTRUCTORES-----*/
     /**
@@ -19,7 +20,7 @@ public class Asignatura {
     public Asignatura (String nombre){
         this.nombre = nombre;
         examenes = new ArrayList<>();
-        nota = 0;
+        nota = numNotas = 0;
     }
     
     /*-----MÉTODOS-----*/
@@ -30,6 +31,14 @@ public class Asignatura {
      */
     public void anyadirTest (Test e){
         examenes.add(e);
+    }
+    
+    /**
+     * Método que actualiza la nota de la asignatura calculando la media
+     * @param notaNueva nota nueva para la asignatura
+     */
+    public void anyadirNota (float notaNueva){
+        nota = ((nota * numNotas) + notaNueva) / ++numNotas;
     }
     
     /*-----SETTERS-----*/
@@ -47,7 +56,7 @@ public class Asignatura {
      * Método que devuelve el valor del atributo nota
      * @return valor del atributo nota
      */
-    public int getNota(){
+    public float getNota(){
         return nota;
     }
     public ArrayList<Test> getExamenes(){

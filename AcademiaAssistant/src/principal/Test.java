@@ -16,7 +16,7 @@ public class Test {
     
     //No estáticos
     private String nombre;
-    private int calificacion;
+    private float calificacion;
     private boolean resuelto;
     private Asignatura asignaturaPert;
     private ArrayList<Pregunta> preguntas;
@@ -96,6 +96,49 @@ public class Test {
         }
     }
     
+    /**
+     * Método para resolver un examen y guardar los resultados
+     */
+    public void resolver(){
+        int opcion;
+        
+        try{
+            out.println("Test: " + nombre);
+            out.println("Asignatura: " + asignaturaPert.getNombre());
+            out.println("Número de preguntas: " + preguntas.size());
+
+            for(int i = 0; i < preguntas.size(); i++){
+                out.println("Pregunta " + (i+1) + " de " + preguntas.size());
+                out.println("Enunciado:\n" + preguntas.get(i).enunciado);
+                //Imprimir opciones
+                for(int j = 0; j < preguntas.get(i).opciones.size(); j++){
+                    out.println("\t" + (j+1) + ": " + preguntas.get(i)
+                        .opciones.get(j));
+                }
+                out.println("Escoge una opcion (1-" + preguntas.get(i).opciones
+                    .size());
+                opcion = Integer.parseInt(in.readLine());
+                if (opcion == preguntas.get(i).correcta){
+                    out.println("Respuesta correcta!");
+                    calificacion++;
+                }
+                else{
+                    out.println("Respuesta incorrecta");
+                    int correcta = preguntas.get(i).correcta;
+                    out.println("La respuesta correcta era " + preguntas.get(i)
+                        .opciones.get(correcta-1));
+                }
+            }
+            out.println("Fin del examen");
+            out.println("Respuestas acertadas " + calificacion + "/" + preguntas.size());
+            calificacion = calificacion * 10 / preguntas.size();
+            out.println("La nota final es " + calificacion);
+            asignaturaPert.anyadirNota(calificacion);
+        }
+        catch(Exception e){
+            out.println("Error: " + e.getMessage());
+        }
+    }
     
     /*-----SETTERS----*/
     /**
@@ -118,7 +161,7 @@ public class Test {
      * Método que devuelve el valor del atributo califiación
      * @return calificación del examen
      */
-    public int getCalificacion (){
+    public float getCalificacion (){
         return calificacion;
     }
     /**

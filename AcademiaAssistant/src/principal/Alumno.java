@@ -2,6 +2,7 @@ package principal;
 
 import static java.lang.System.out;
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  * <h1>Clase Alumno</h1>
@@ -10,6 +11,11 @@ import java.util.ArrayList;
  */
 public class Alumno extends Persona{
     /*-----ATRIBUTOS-----*/
+    //Estáticos
+    private static BufferedReader in
+            = new BufferedReader(new InputStreamReader(System.in));
+    
+    //No estáticos
     private ArrayList<Asignatura> asignaturas;
     private ArrayList<Test> examenesPendientes;
     private ArrayList<Test> examenesResueltos;
@@ -33,10 +39,10 @@ public class Alumno extends Persona{
 
     
     /*-----MÉTODOS-----*/
-    @Override
     /**
-     * Método que muestra el menu de usuario de un alumno
+     * Método que muestra el menu de un alumno
      */
+    @Override
     public void mostrarMenu() {
         out.println("\nPanel de control del alumno " + nombre);
         out.println("1. Mirar notas de asignatura");
@@ -48,11 +54,13 @@ public class Alumno extends Persona{
         out.print("Introduce una opcion: ");
     }
 
-    @Override
     /**
      * Método que gestiona las opciones posibles de un menu para el usuario
      * alumno
+     * @param opcion opcion que se ha escogido
+     * @return true si el usuario decidió salir false en caso contrario
      */
+    @Override
     public boolean gestionMenu(int opcion) {
         boolean resultado = false;
         
@@ -112,7 +120,8 @@ public class Alumno extends Persona{
             out.println("Tienes " + examenesPendientes.size() + " examenes "
                 + "pendientes");
             for(int i = 0; i < examenesPendientes.size(); i++)
-                out.println((i+1) + ": " + examenesPendientes.get(i).getNombre());           
+                out.println((i+1) + ": " + examenesPendientes.get(i)
+                    .getNombre());           
         }
         else
             out.println("Actualmente no tienes ningun test pendiente");       
@@ -128,7 +137,8 @@ public class Alumno extends Persona{
             for(Asignatura as : asignaturas){
                 out.println("Asignatura: " + as.getNombre());
                for(Test t : examenesResueltos)
-                   out.println("\tTitulo: " + t.getNombre() + "\tNota: " + t.getCalificacion());               
+                   out.println("\tTitulo: " + t.getNombre() + "\tNota: " 
+                        + t.getCalificacion());               
             }
         }
         else
@@ -165,13 +175,33 @@ public class Alumno extends Persona{
         }
     }
     
+    /**
+     * Método que resuelve un examen pendiente elegido por el alumno
+     */
     public void resolverTest(){
-        if (examenesPendientes.size() > 0){
-            out.println("Introduce el numero de examen pendiente que quieras resolver:"
-                + " (0: salir, (1-" + examenesPendientes.size() + ")");
+        int opcion;
+        
+        try{
+            if (examenesPendientes.size() > 0){
+                out.println("Introduce el numero de examen pendiente que "
+                    + "quieras resolver: (0: salir, (1-" 
+                    + examenesPendientes.size() + ")");
+                do{
+                    opcion = Integer.parseInt(in.readLine());
+                }while(opcion < 0 || opcion > examenesPendientes.size());
+                if (opcion != 0){
+                    examenesPendientes.get(opcion).resolver();
+                    examenesResueltos.add(examenesPendientes.get(opcion));
+                    examenesPendientes.remove(opcion);
+                }
+            }
+            else{
+                out.println("Actualmente no tienes examenes por resolver");
+            }
+            out.println("Saliendo de la interfaz de examenes...");
         }
-        else{
-            out.println("Actualmente no tienes examenes por resolver");
+        catch(Exception e){
+            out.println("Error: " + e.getMessage());
         }
     }
     
