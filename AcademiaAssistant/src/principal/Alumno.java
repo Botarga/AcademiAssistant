@@ -43,7 +43,8 @@ public class Alumno extends Persona{
         out.println("2. Mirar test pendientes");
         out.println("3. Mirar notas de test");
         out.println("4. Mostrar datos de alumno");
-        out.println("5. Salir");
+        out.println("5. Resolver test pendiente");
+        out.println("6. Salir");
         out.print("Introduce una opcion: ");
     }
 
@@ -71,8 +72,11 @@ public class Alumno extends Persona{
             case 4:
                 mostrarInformacionAlumno();
                 break;
-                
             case 5:
+                resolverTest();
+                break;
+                
+            case 6:
                 out.println("Saliendo...");
                 resultado = true;
                 break;
@@ -107,13 +111,11 @@ public class Alumno extends Persona{
         if (examenesPendientes.size() > 0){
             out.println("Tienes " + examenesPendientes.size() + " examenes "
                 + "pendientes");
-            for(int i = 0; i < examenesPendientes.size(); i++){
-                out.println((i+1) + ": " + examenesPendientes.get(i).getNombre());
-            }
+            for(int i = 0; i < examenesPendientes.size(); i++)
+                out.println((i+1) + ": " + examenesPendientes.get(i).getNombre());           
         }
-        else{
-            out.println("Actualmente no tienes ningun test pendiente");
-        }
+        else
+            out.println("Actualmente no tienes ningun test pendiente");       
     }
     
     /**
@@ -128,7 +130,6 @@ public class Alumno extends Persona{
                for(Test t : examenesResueltos)
                    out.println("\tTitulo: " + t.getNombre() + "\tNota: " + t.getCalificacion());               
             }
-
         }
         else
             out.println("Actualmente no tienes ningun examen resuelto");       
@@ -151,13 +152,26 @@ public class Alumno extends Persona{
             aux = asignaturas.get(i);
             out.println(aux.getNombre());
             out.println("\tNota de asignatura: " + aux.getNota());
-
-            out.println("\tExamenes de la asignatura");
+            
+            //Examenes resueltos de sus asignaturas
+            out.println("\tExamenes de la asignatura resueltos");
             for(int j = 0; j < aux.getExamenes().size(); j++){
-                out.println("\t\tTitulo: " + aux.getExamenes().get(j)
-                    .getNombre() + "\tCalificacion: " + 
-                    aux.getExamenes().get(j).getCalificacion());
+                if (aux.getExamenes().get(j).getResuelto()){
+                    out.println("\t\tTitulo: " + aux.getExamenes().get(j)
+                        .getNombre() + "\tCalificacion: " + 
+                        aux.getExamenes().get(j).getCalificacion());
+                }
             }                    
+        }
+    }
+    
+    public void resolverTest(){
+        if (examenesPendientes.size() > 0){
+            out.println("Introduce el numero de examen pendiente que quieras resolver:"
+                + " (0: salir, (1-" + examenesPendientes.size() + ")");
+        }
+        else{
+            out.println("Actualmente no tienes examenes por resolver");
         }
     }
     
@@ -165,6 +179,10 @@ public class Alumno extends Persona{
     
     
     /*-----GETTERS-----*/
+    /**
+     * Método que obtiene el valor del atributo asignaturas
+     * @return asignaturas del alumno
+     */
     public ArrayList<Asignatura> getAsignaturas(){
         return asignaturas;
     }

@@ -17,6 +17,7 @@ public class Test {
     //No estáticos
     private String nombre;
     private int calificacion;
+    private boolean resuelto;
     private Asignatura asignaturaPert;
     private ArrayList<Pregunta> preguntas;
     
@@ -48,6 +49,7 @@ public class Test {
     public Test (String nombre){
         this.nombre = nombre;
         preguntas = new ArrayList<>();
+        resuelto = false;
     }
     
     
@@ -118,5 +120,12 @@ public class Test {
      */
     public int getCalificacion (){
         return calificacion;
+    }
+    /**
+     * Método que devuelve el valor del atributo resuelto
+     * @return valor resuelto del examen 
+     */
+    public boolean getResuelto (){
+        return resuelto;
     }
 }
