@@ -16,6 +16,7 @@ public class Profesor extends Persona{
     private static BufferedReader in = 
             new BufferedReader(new InputStreamReader(System.in));
     
+    
     /*-----CONSTRUCTORES-----*/
     /**
      * Constructor parametrizado de la clase Profesor
@@ -31,11 +32,12 @@ public class Profesor extends Persona{
         gestorPert = g;
     }
     
+    
     /*-----MÉTODOS-----*/
-    @Override
     /**
      * Método que muestra el menú de usuario de un profesor
      */
+    @Override
     public void mostrarMenu() {
         out.println("\nPanel de control del profesor " + nombre);
         out.println("1. Mirar lista de alumnos");
@@ -47,11 +49,13 @@ public class Profesor extends Persona{
         out.print("Introduce una opcion: ");
     }
     
-    @Override
     /**
      * Método que gestiona las opciones posibles de un menu para el usuario
      * profesor
+     * @param opcion opcion escogida en el menu
+     * @return true si se quiere salir del menu, false en caso contrario
      */
+    @Override
     public boolean gestionMenu(int opcion) {
         boolean resultado = false;
         
@@ -238,6 +242,9 @@ public class Profesor extends Persona{
         }
     }
 
+    /**
+     * Método para guiar al profesor por la creación de un test para sus alumnos
+     */
     public void prepararTest(){
         String asignatura, titulo;
         Test testAux;

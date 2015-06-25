@@ -21,6 +21,7 @@ public class Gestor {
     private ArrayList<Persona> usuarios;
     private Persona usuarioActual;
     
+    
     /*-----CONSTRUCTOR-----*/
     /**
      * Constructor que inicializa la clase gestor
@@ -32,6 +33,7 @@ public class Gestor {
         usuarios.add(new Profesor("Rosa", "Rosa", "abcd", "101010j", this));
         //usuarios.add(new Delegado("Delegado", "Alberto", "abcd", "103023i"));
     }
+    
     
     /*-----MÉTODOS-----*/
     /**
@@ -132,7 +134,9 @@ public class Gestor {
         g.run();
     }
     
+    
     /*-----SETTERS-----*/
+    
     
     /*-----GETTERS----*/
     /**

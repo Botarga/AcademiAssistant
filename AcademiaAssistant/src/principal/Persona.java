@@ -19,6 +19,7 @@ public abstract class Persona {
     protected String login;
     protected String contrasenya;
     
+    
     /*-----CONSTRUCTORES-----*/
     /**
      * Constructor parametrizado de la clase Persona
@@ -33,6 +34,7 @@ public abstract class Persona {
         this.contrasenya = contrasenya;
         this.dni = dni;
     }
+    
     
     /*-----MÉTODOS-----*/
     /**
@@ -63,7 +65,14 @@ public abstract class Persona {
      * usuario
      */
     public abstract void mostrarMenu();
+    /**
+     * Método abstracto redefinido por clases hijas para gestionar el menu de
+     * usuario
+     * @param opcion dependiente de la implementación de las hijas
+     * @return dependiente de la implementación de las hijas
+     */
     public abstract boolean gestionMenu(int opcion);
+    
     
     /*-----SETTERS-----*/
     /**
@@ -94,6 +103,7 @@ public abstract class Persona {
     public void setContrasenya (String contrasenya){
         this.contrasenya = contrasenya;
     }
+    
     
     /*-----GETTERS-----*/
     /**

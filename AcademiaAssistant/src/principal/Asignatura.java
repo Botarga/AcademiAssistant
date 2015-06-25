@@ -3,14 +3,16 @@ package principal;
 import java.util.ArrayList;
 
 /**
- *
+ * Clase que gestiona información de una asignatura
  * @author botarga
  */
 public class Asignatura {
+    /*-----ATRIBUTOS-----*/
     private String nombre;
     private ArrayList<Test> examenes;
     private float nota;
     private int numNotas;
+    
     
     /*-----CONSTRUCTORES-----*/
     /**
@@ -22,6 +24,7 @@ public class Asignatura {
         examenes = new ArrayList<>();
         nota = numNotas = 0;
     }
+    
     
     /*-----MÉTODOS-----*/
     /**
@@ -41,6 +44,7 @@ public class Asignatura {
         nota = ((nota * numNotas) + notaNueva) / ++numNotas;
     }
     
+    
     /*-----SETTERS-----*/
     
     
@@ -59,6 +63,10 @@ public class Asignatura {
     public float getNota(){
         return nota;
     }
+    /**
+     * Método que devuelve el valor del atributo examenes
+     * @return examenes de la asignatura
+     */
     public ArrayList<Test> getExamenes(){
         return examenes;
     }

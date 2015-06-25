@@ -9,7 +9,6 @@ import java.util.ArrayList;
  * @author botarga
  */
 public class Delegado extends Alumno{
-    
     /*-----CONSTRUCTORES-----*/
     /**
      * Constructor parametrizado de la clase Delegado
@@ -23,11 +22,12 @@ public class Delegado extends Alumno{
         super(nombre, login, contrasenya, dni, asignaturas);
     }
     
+    
     /*-----MÉTODOS-----*/
-    @Override
     /**
      * Método que muestra el menu de usuario de un delegado
      */
+    @Override
     public void mostrarMenu (){
         out.println("\nPanel de control del delegado " + nombre);
         out.println("1. Mirar notas de asignatura");
@@ -39,11 +39,13 @@ public class Delegado extends Alumno{
         out.print("Introduce una opcion: ");
     }
     
-    @Override
     /**
      * Método que gestiona las opciones posibles de un menu para el usuario
      * delegado
+     * @param opcion opción escogida en el menú
+     * @return true si el usuario decide salir del menú, false en caso contrario
      */
+    @Override
     public boolean gestionMenu(int opcion) {
         boolean resultado = false;
         

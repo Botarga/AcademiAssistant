@@ -140,6 +140,7 @@ public class Test {
         }
     }
     
+    
     /*-----SETTERS----*/
     /**
      * Método para asignar un valor al atributo asignatura
@@ -148,6 +149,7 @@ public class Test {
     public void setAsignaturaPert (Asignatura a){
         asignaturaPert = a;
     }
+    
     
     /*-----GETTERS----*/
     /**
