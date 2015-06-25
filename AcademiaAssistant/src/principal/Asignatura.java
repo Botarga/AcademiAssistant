@@ -42,7 +42,8 @@ public class Asignatura {
      * @param notaNueva nota nueva para la asignatura
      */
     public void anyadirNota (float notaNueva){
-        nota = ((nota * numNotas) + notaNueva) / ++numNotas;
+        nota = ((nota * numNotas) + notaNueva) / (numNotas+1);
+        numNotas++;
     }
     
     

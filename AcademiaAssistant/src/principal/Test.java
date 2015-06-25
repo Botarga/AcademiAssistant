@@ -147,7 +147,8 @@ public class Test {
                 }
             }
             out.println("Fin del examen");
-            out.println("Respuestas acertadas " + calificacion + "/" + preguntas.size());
+            out.println("Respuestas acertadas " + (int)calificacion + "/" 
+                + preguntas.size());
             calificacion = calificacion * 10 / preguntas.size();
             out.println("La nota final es " + calificacion);
             asignaturaPert.anyadirNota(calificacion);
