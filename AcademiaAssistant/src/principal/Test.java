@@ -52,12 +52,19 @@ public class Test {
         resuelto = false;
     }
     
+    public Test (Test t){
+        this.nombre = t.nombre;
+        this.calificacion = t.calificacion;
+        this.resuelto = t.resuelto;
+        this.asignaturaPert = t.asignaturaPert;
+        this.preguntas = t.preguntas;
+    }
     
-    /*------MÉTODOS------*/
+    /*-----MÉTODOS------*/
     /**
      * Método auxiliar para mostrar el contenido del examen usado para debug
      */
-    public void mostrarExamen(){
+    public void mostrarExamen (){
         out.println("Se va a mostrar informacion del examen");
         //out.println("Asignatura: " + asignaturaPert.getNombre());
         out.println("Titulo: " + nombre);
@@ -116,7 +123,7 @@ public class Test {
     /**
      * Método para resolver un examen y guardar los resultados
      */
-    public void resolver(){
+    public void resolver (){
         int opcion;
         
         try{
@@ -127,11 +134,13 @@ public class Test {
             for(int i = 0; i < preguntas.size(); i++){
                 out.println("Pregunta " + (i+1) + " de " + preguntas.size());
                 out.println("Enunciado:\n" + preguntas.get(i).enunciado);
+                
                 //Imprimir opciones
                 for(int j = 0; j < preguntas.get(i).opciones.size(); j++){
                     out.println("\t" + (j+1) + ": " + preguntas.get(i)
                         .opciones.get(j));
                 }
+                
                 out.println("Escoge una opcion (1-" + preguntas.get(i).opciones
                     .size() + ")");
                 opcion = Integer.parseInt(in.readLine());
@@ -159,7 +168,7 @@ public class Test {
     }
     
     
-    /*-----SETTERS----*/
+    /*-----SETTERS-----*/
     /**
      * Método para asignar un valor al atributo asignatura
      * @param a valor nuevo para el atributo asignatura
@@ -169,12 +178,12 @@ public class Test {
     }
     
     
-    /*-----GETTERS----*/
+    /*-----GETTERS-----*/
     /**
      * Método que devuelve el valor del atributo nombre
      * @return nombre del examen
      */
-    public String getNombre(){
+    public String getNombre (){
         return nombre;
     }
     /**

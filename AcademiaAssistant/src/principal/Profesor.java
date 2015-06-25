@@ -180,8 +180,7 @@ public class Profesor extends Persona{
                             + (i+1) + " de " + numeroAsignaturas + ")");
                         asignaturas.add(new Asignatura(in.readLine()));
                     }
-                }
-               
+                }              
             }while(!correcto);
             
             if (correcto){
@@ -268,9 +267,9 @@ public class Profesor extends Persona{
                 for (Alumno alumno : alumnos) {
                     for (int j = 0; j < alumno.getAsignaturas().size(); j++) {
                         if (alumno.getAsignaturas().get(j).getNombre()
-                                .compareToIgnoreCase(asignatura) == 0) {
-                            alumno.anyadirExamen(testAux);
-                            alumno.getAsignaturas().get(j).anyadirTest(testAux);
+                                .compareToIgnoreCase(asignatura) == 0) {                   
+                            alumno.getAsignaturas().get(j).anyadirTest(new Test(testAux));
+                            alumno.anyadirExamen(new Test(testAux));
                         }
                     }
                 }
