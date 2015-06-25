@@ -185,11 +185,12 @@ public class Alumno extends Persona{
             if (examenesPendientes.size() > 0){
                 out.println("Introduce el numero de examen pendiente que "
                     + "quieras resolver: (0: salir, (1-" 
-                    + examenesPendientes.size() + ")");
+                    + examenesPendientes.size() + "))");
                 do{
                     opcion = Integer.parseInt(in.readLine());
                 }while(opcion < 0 || opcion > examenesPendientes.size());
                 if (opcion != 0){
+                    opcion--;
                     examenesPendientes.get(opcion).resolver();
                     examenesResueltos.add(examenesPendientes.get(opcion));
                     examenesPendientes.remove(opcion);

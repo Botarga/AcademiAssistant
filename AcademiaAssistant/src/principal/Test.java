@@ -55,13 +55,29 @@ public class Test {
     
     /*------MÉTODOS------*/
     /**
+     * Método auxiliar para mostrar el contenido del examen usado para debug
+     */
+    public void mostrarExamen(){
+        out.println("Se va a mostrar informacion del examen");
+        //out.println("Asignatura: " + asignaturaPert.getNombre());
+        out.println("Titulo: " + nombre);
+        out.println("Numero de preguntas: " + preguntas.size());
+        
+        for(Pregunta p : preguntas){
+            out.println("Enunciado: " + p.enunciado);
+            for(String opc : p.opciones){
+                out.println("\t" + opc);
+            }
+        }
+    }
+    
+    /**
      * Método para crear el contenido de un examen
      */
     public void crear (){
         int n, numOpciones, correcta;
         String enunciado;
         ArrayList<String> opciones = new ArrayList<>();
-        Pregunta preguntaAux;
         
         try{
             out.println("Introduce el numero de preguntas del test");
@@ -88,7 +104,8 @@ public class Test {
                     correcta = Integer.parseInt(in.readLine());
                 }while(correcta <= 0 || correcta > numOpciones);
                 
-                preguntas.add(new Pregunta(enunciado, opciones, correcta));               
+                preguntas.add(new Pregunta(enunciado
+                        , (ArrayList<String>)opciones.clone(), correcta));               
             }
         }
         catch(Exception e){
@@ -116,7 +133,7 @@ public class Test {
                         .opciones.get(j));
                 }
                 out.println("Escoge una opcion (1-" + preguntas.get(i).opciones
-                    .size());
+                    .size() + ")");
                 opcion = Integer.parseInt(in.readLine());
                 if (opcion == preguntas.get(i).correcta){
                     out.println("Respuesta correcta!");

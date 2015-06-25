@@ -34,6 +34,7 @@ public class Asignatura {
      */
     public void anyadirTest (Test e){
         examenes.add(e);
+        examenes.get(examenes.size()-1).setAsignaturaPert(this);
     }
     
     /**
