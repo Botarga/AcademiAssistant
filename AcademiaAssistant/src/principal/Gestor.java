@@ -26,12 +26,10 @@ public class Gestor {
     /**
      * Constructor que inicializa la clase gestor
      */
-    public Gestor(){
-        terminado = false;
+    public Gestor(){      
+        terminado = false;   
         usuarios = new ArrayList<>();
-        //usuarios.add(new Alumno("Mario Vivas", "Mario", "abcd", "123456t"));
         usuarios.add(new Profesor("Rosa", "Rosa", "abcd", "101010j", this));
-        //usuarios.add(new Delegado("Delegado", "Alberto", "abcd", "103023i"));
     }
     
     
