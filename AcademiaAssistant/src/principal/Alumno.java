@@ -98,7 +98,13 @@ public class Alumno extends Persona{
      * Método que añade un examen a la lista de examenes pendientes
      * @param t examen para añadir
      */
-    public void anyadirExamen(Test t){
+    public void anyadirExamen(Test t, String asignatura){
+        for(int i = 0; i < asignaturas.size(); i++){
+            if (asignaturas.get(i).getNombre().compareToIgnoreCase(asignatura) == 0){;
+                t.setAsignaturaPert(asignaturas.get(i));
+                break;
+            }
+        }
         examenesPendientes.add(t);
     }
     
@@ -217,5 +223,12 @@ public class Alumno extends Persona{
      */
     public ArrayList<Asignatura> getAsignaturas(){
         return asignaturas;
+    }
+    /**
+     * Método que devuelve el valor del atributo examenes pendientes
+     * @return examenes pendientes del alumno
+     */
+    public ArrayList<Test> getExamenesPendientes(){
+        return examenesPendientes;
     }
 }

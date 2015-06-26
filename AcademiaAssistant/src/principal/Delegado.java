@@ -51,18 +51,23 @@ public class Delegado extends Alumno{
         
         switch(opcion){
             case 1:
+                super.mirarNotas();
                 break;
                 
             case 2:
+                super.mirarTestPendientes();
                 break;
                 
             case 3:
+                super.mirarNotasTest();
                 break;
                 
             case 4:
+                super.mostrarInformacionAlumno();
                 break;
                 
             case 5:
+                notificarFaltasAsistencia();
                 break;
                 
             case 6:
@@ -72,5 +77,13 @@ public class Delegado extends Alumno{
         }
         
         return resultado;
+    }
+    
+    /**
+     * Método para notificar al profesor del delegado un mensaje como faltas de
+     * asistencia
+     */
+    public void notificarFaltasAsistencia (){
+        
     }
 }

@@ -51,13 +51,16 @@ public class Test {
         preguntas = new ArrayList<>();
         resuelto = false;
     }
-    
+    /**
+     * Constructor copia
+     * @param t test para copiar
+     */
     public Test (Test t){
-        this.nombre = t.nombre;
-        this.calificacion = t.calificacion;
-        this.resuelto = t.resuelto;
-        this.asignaturaPert = t.asignaturaPert;
-        this.preguntas = t.preguntas;
+        this.nombre = t.getNombre();
+        this.calificacion = t.getCalificacion();
+        this.resuelto = t.getResuelto();
+        this.asignaturaPert = t.getAsignaturaPert();
+        this.preguntas = t.getPreguntas();
     }
     
     /*-----MÉTODOS------*/
@@ -66,7 +69,7 @@ public class Test {
      */
     public void mostrarExamen (){
         out.println("Se va a mostrar informacion del examen");
-        //out.println("Asignatura: " + asignaturaPert.getNombre());
+        out.println("Asignatura: " + asignaturaPert.getNombre());
         out.println("Titulo: " + nombre);
         out.println("Numero de preguntas: " + preguntas.size());
         
@@ -199,5 +202,19 @@ public class Test {
      */
     public boolean getResuelto (){
         return resuelto;
+    }
+    /**
+     * Método que devuelve el valor del atributo AsignaturaPert
+     * @return asignatura perteneciente al examen
+     */
+    public Asignatura getAsignaturaPert (){
+        return asignaturaPert;
+    }
+    /**
+     * Método que devuelve el valor del array list preguntas
+     * @return preguntas del test
+     */
+    public ArrayList<Pregunta> getPreguntas(){
+        return preguntas;
     }
 }

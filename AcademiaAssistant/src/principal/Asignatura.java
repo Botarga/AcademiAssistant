@@ -33,8 +33,8 @@ public class Asignatura {
      * @param e examen nuevo para añadir a la asignatura
      */
     public void anyadirTest (Test e){
+        e.setAsignaturaPert(this);
         examenes.add(e);
-        examenes.get(examenes.size()-1).setAsignaturaPert(this);
     }
     
     /**

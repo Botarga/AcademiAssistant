@@ -267,9 +267,9 @@ public class Profesor extends Persona{
                 for (Alumno alumno : alumnos) {
                     for (int j = 0; j < alumno.getAsignaturas().size(); j++) {
                         if (alumno.getAsignaturas().get(j).getNombre()
-                                .compareToIgnoreCase(asignatura) == 0) {                   
+                                .compareToIgnoreCase(asignatura) == 0) {                            
                             alumno.getAsignaturas().get(j).anyadirTest(new Test(testAux));
-                            alumno.anyadirExamen(new Test(testAux));
+                            alumno.anyadirExamen(new Test(testAux), asignatura);
                         }
                     }
                 }
